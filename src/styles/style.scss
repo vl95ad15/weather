@@ -1,10 +1,9 @@
-$bg-1: #081b25;
-$bg-2: #1c2b37;
-$active: #a75786;
+@import "variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 body {
+    font-family: 'Roboto', sans-serif;
     background-color: $bg-1;
-    margin: 0;
-    padding: 0;
+    color: white;
 }
 

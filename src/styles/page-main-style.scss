@@ -1,0 +1,46 @@
+@import "variables.scss";
+
+.search-wrapper {
+  display: inline;
+  .search-field {
+    width: 100%;
+    height: 30px;
+  }
+}
+
+.main-info-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  background-color: $bg-2;
+  .main-info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .degrees {
+      font-size: xxx-large;
+      margin: 0;
+    }
+    .weather-type {
+      background-color: #353361;
+      padding: 8px;
+      border-radius: 20px;
+    }
+  }
+  .weather-img-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.additional-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  background-color: $bg-2;
+  padding: 5px 0;
+  margin-top: 5px;
+  font-size: small;
+}
