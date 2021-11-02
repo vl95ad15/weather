@@ -9,12 +9,12 @@ export default class Router {
     this.mode =
       options &&
       options.mode &&
-      options.mode === "history" &&
+      options.mode == "history" &&
       !!history.pushState
         ? "history"
         : "hash";
     this.root =
-      options && options.root && options.root !== "/"
+      options && options.root && options.root != "/"
         ? "/" + this.clearSlashes(options.root) + "/"
         : "/";
     return this;
@@ -47,7 +47,7 @@ export default class Router {
   check(f) {
     let fragment = f || this.getFragment();
 
-    if (fragment === "") fragment = "/";
+    if (fragment == "") fragment = "/";
 
     const matchedRoute = this.routes.find((route) => {
       return Array.isArray(fragment.match(route.re));
