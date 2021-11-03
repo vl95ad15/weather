@@ -1,7 +1,16 @@
 import "../../styles/page-main-style.scss";
-import { createEl } from "../helpers";
+import { clearRootElement, createEl } from "../helpers";
+import { apiKey } from "../api-key";
+import { searchResult } from "../storage";
 
-function renderSearch(root) {
+function renderAppContainer() {
+  const appContainer = createEl("div");
+  appContainer.id = "app";
+
+  return appContainer;
+}
+
+function renderSearch() {
   const searchWrapper = createEl("div", "search-wrapper");
   const searchForm = createEl("form");
   searchForm.id = "search-form";
@@ -9,13 +18,20 @@ function renderSearch(root) {
   searchField.type = "search";
   searchField.placeholder = "Enter your city...";
   searchField.autofocus = true;
+  const resultsField = createEl("div", "results-field");
+  const resultsList = createEl("ul", "results-list");
+  searchField.oninput = () =>
+    searchResult(apiKey, searchField.value, resultsList);
 
   searchWrapper.append(searchForm);
+  searchWrapper.append(resultsField);
+  resultsField.append(resultsList);
   searchForm.append(searchField);
-  root.append(searchWrapper);
+
+  return searchWrapper;
 }
 
-function renderMainInfo(root) {
+function renderMainInfo() {
   const mainInfoWrapper = createEl("div", "main-info-wrapper");
   const weatherImgBlock = createEl("div", "weather-img-block");
   const weatherImg = createEl("img", "weather-img");
@@ -24,29 +40,86 @@ function renderMainInfo(root) {
   const degrees = createEl("p", "degrees");
   const weatherType = createEl("p", "weather-type");
 
-  root.append(mainInfoWrapper);
   mainInfoWrapper.append(mainInfoBlock);
   mainInfoWrapper.append(weatherImgBlock);
   mainInfoBlock.append(cityName);
   mainInfoBlock.append(degrees);
   mainInfoBlock.append(weatherType);
   weatherImgBlock.append(weatherImg);
+
+  return mainInfoWrapper;
 }
 
-function renderAdditionalInfo(root) {
+function renderAdditionalInfo() {
   const additionalInfoWrapper = createEl("div", "additional-info");
   const precipitation = createEl("div", "precipitation");
   const pressure = createEl("div", "pressure");
   const wind = createEl("div", "wind");
 
-  root.append(additionalInfoWrapper);
   additionalInfoWrapper.append(precipitation);
   additionalInfoWrapper.append(pressure);
   additionalInfoWrapper.append(wind);
+
+  return additionalInfoWrapper;
 }
 
-export default function renderMainPage(root) {
-  renderSearch(root);
-  renderMainInfo(root);
-  renderAdditionalInfo(root);
+function renderForecastContainer() {
+  const forecastContainer = createEl("div", "forecast-container");
+  const sunRiseSetContainer = createEl("div", "sun-rise-set");
+  const todayForecastContainer = createEl("div", "today-forecast");
+  const todayForecastHeader = createEl("span", "today-header");
+  todayForecastHeader.textContent = "Today";
+  const todayForecastList = createEl("div", "today-list");
+  todayForecastContainer.append(todayForecastHeader);
+  todayForecastContainer.append(todayForecastList);
+  const futureForecastListContainer = createEl("div", "future-forecast");
+  forecastContainer.append(sunRiseSetContainer);
+  forecastContainer.append(todayForecastContainer);
+  forecastContainer.append(futureForecastListContainer);
+
+  return forecastContainer;
+}
+
+function renderContent() {
+  const infoContainer = createEl("div", "info-container");
+
+  infoContainer.append(renderMainInfo());
+  infoContainer.append(renderAdditionalInfo());
+  infoContainer.append(renderForecastContainer());
+
+  // if (!cities) {
+  //   infoContainer.append(renderEmptyPlaceholder());
+  // } else {
+  //   infoContainer.append(renderMainInfo());
+  //   infoContainer.append(renderAdditionalInfo());
+  // }
+
+  return infoContainer;
+}
+
+function renderFavoritesContainer() {
+  const favoritesContainer = createEl("div", "fav-container");
+
+  return favoritesContainer;
+}
+
+function renderNavBar() {
+  const navBarContainer = createEl("div", "nav-bar-container");
+
+  navBarContainer.innerHTML = `<ul>
+                                <li class="home">Home</li>
+                                <li class="fav">Favorites</li>
+                               </ul>`;
+  return navBarContainer;
+}
+
+export default function renderMainPage() {
+  const rootElement = clearRootElement();
+  const appContainer = renderAppContainer();
+
+  // appContainer.append(renderSearch());
+  appContainer.append(renderNavBar());
+  appContainer.append(renderContent());
+
+  rootElement.append(appContainer);
 }
