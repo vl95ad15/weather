@@ -1,7 +1,10 @@
 import Router from "./router";
 import renderMainPage from "./pages/page-main";
+import { getWeather } from "./storage";
+import { apiKey } from "./api-key";
 
 let router = null;
+const defaultCity = "Minsk";
 
 export default function configureRouter(appRootPath) {
   if (router !== null) {
@@ -10,9 +13,10 @@ export default function configureRouter(appRootPath) {
 
   router = new Router([], "history", appRootPath);
 
-  router.add(/^\/$/, () => {
+  router.add(/^\/$/, async () => {
     console.log("Navigating");
-    renderMainPage();
+    await renderMainPage();
+    await getWeather(apiKey, defaultCity);
   });
 
   router.config({ mode: "history", root: "/" });
