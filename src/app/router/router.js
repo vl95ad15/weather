@@ -5,6 +5,7 @@ export default class Router {
     this.root = root;
   }
 
+  /* configurate Router, change/making first value of mode and root */
   config(options) {
     this.mode =
       options &&
@@ -20,6 +21,7 @@ export default class Router {
     return this;
   }
 
+  /* get fragment of path that is placed after app root/ */
   getFragment() {
     let fragment = "";
     if (this.mode === "history") {
@@ -35,15 +37,18 @@ export default class Router {
     return this.clearSlashes(fragment);
   }
 
+  /* removing first and last slashes */
   clearSlashes(path) {
     return path.toString().replace(/\/$/g, "").replace(/^\//g, "");
   }
 
+  /* add new route in routes Array */
   add(re, handler) {
     this.routes.push({ re: re, handler: handler });
     return this;
   }
 
+  /* matching description from getFragment with description from route re, and call handler */
   check(f) {
     let fragment = f || this.getFragment();
 
@@ -63,6 +68,7 @@ export default class Router {
     return this;
   }
 
+  /* hang listener on window */
   listen() {
     window.addEventListener(
       "navigate",
@@ -75,6 +81,7 @@ export default class Router {
     return this;
   }
 
+  /* removing route from routes Array (optional) */
   remove(param) {
     this.routes.forEach((router) => {
       if (
@@ -88,6 +95,7 @@ export default class Router {
     return this;
   }
 
+  /* navigating to path from our routes array */
   navigate(path) {
     path = path ? path : "";
 
