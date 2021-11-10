@@ -1,0 +1,24 @@
+.search-wrapper {
+  display: inline;
+  .search-field {
+    width: 100%;
+    height: 30px;
+  }
+  .results-field {
+    background-color: white;
+    color: #081b25;
+    .results-list {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        padding: 5px;
+        cursor: pointer;
+        &:hover {
+          background-color: #274f6b;
+          color: white;
+        }
+      }
+    }
+  }
+}

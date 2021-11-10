@@ -6,4 +6,22 @@ body {
   margin: 0;
   background-color: $bg-1;
   color: white;
+  .nav-bar-container {
+    .nav-bar-list {
+      padding-inline-start: 0;
+      .nav-item {
+        list-style: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        &:hover {
+          background-color: #274f6b;
+          color: white;
+        }
+      }
+      #active {
+        background-color: red;
+        font-weight: bold;
+      }
+    }
+  }
 }

@@ -1,0 +1,177 @@
+@import "variables.scss";
+
+#app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  .info-container {
+    width: 100%;
+    .main-info-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      background: rgb(42, 68, 89);
+      background: linear-gradient(
+        0deg,
+        rgba(42, 68, 89, 1) 25%,
+        rgba(20, 34, 45, 1) 75%
+      );
+      .main-info-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .city-name {
+          font-size: xx-large;
+        }
+        .degrees {
+          font-size: xxx-large;
+          margin: 0;
+        }
+        .weather-type {
+          background-color: #353361;
+          padding: 8px;
+          border-radius: 20px;
+        }
+      }
+      .weather-img-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+    .additional-info {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      background-color: rgb(42, 68, 89);
+      padding: 15px 0;
+      .precipitation {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img {
+          margin-right: 7px;
+          width: 15px;
+          height: 20px;
+          filter: invert(100%);
+        }
+      }
+      .pressure {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img {
+          margin-right: 7px;
+          width: 25px;
+          height: 25px;
+          filter: invert(100%);
+        }
+      }
+      .wind {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img {
+          margin-right: 7px;
+          width: 25px;
+          height: 25px;
+          filter: invert(100%);
+        }
+      }
+    }
+    .forecast-container {
+      background-color: #14222d;
+      .sun-rise-set-container {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        padding: 50px 0;
+        background: rgb(20, 34, 45);
+        background: linear-gradient(
+          0deg,
+          rgba(20, 34, 45, 1) 45%,
+          rgba(193, 151, 83, 1) 50%,
+          rgba(42, 68, 89, 1) 55%
+        );
+        .sun-rise-block {
+          position: absolute;
+          left: 30px;
+          top: 10px;
+        }
+        .sun-set-block {
+          position: absolute;
+          right: 30px;
+          bottom: 10px;
+        }
+        .block {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 105px;
+          .img {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+      .today-forecast-container {
+        background: rgb(35, 56, 73);
+        background: linear-gradient(
+          0deg,
+          rgba(35, 56, 73, 1) 0%,
+          rgba(20, 34, 45, 1) 79%
+        );
+        .today-header {
+          padding: 0 10px;
+        }
+        .today-list {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          padding: 10px 0;
+          .today-list-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            img {
+              width: 70px;
+              height: 70px;
+            }
+          }
+        }
+      }
+      .future-forecast {
+        background-color: #233849;
+        .future-forecast-item {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-evenly;
+          align-items: center;
+          .week-day {
+            width: 100px;
+          }
+          img {
+            width: 50px;
+            height: 50px;
+          }
+          .temp {
+            display: flex;
+            justify-content: space-between;
+            width: 50px;
+            .night-temp {
+              color: #3db0b0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
