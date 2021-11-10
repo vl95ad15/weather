@@ -1,3 +1,3 @@
-const navBarItems = ["Home", "Details", "Favorites", "Settings"];
+const navBarItems = ["Home", "Favorites", "Settings"];
 
 export default navBarItems;

@@ -1,4 +1,4 @@
-import "../styles/page-style.scss";
+import "../styles/home-page-style.scss";
 import { clearRootElement, createEl } from "./functions/helpers";
 import { apiKey } from "./api-key";
 import { searchResult } from "./functions/storage";
@@ -64,17 +64,35 @@ function renderAdditionalInfo() {
   return additionalInfoWrapper;
 }
 
+function renderSunRiseSetContainer() {
+  const sunRiseSetContainer = createEl("div", "sun-rise-set-container");
+  const sunRiseInfoBlock = createEl("div", "sun-rise-block block");
+  const sunRiseInfo = createEl("span", "sun-rise-info");
+  const sunRiseImg = createEl("img", "sun-rise-img img");
+  sunRiseInfoBlock.append(sunRiseInfo);
+  sunRiseInfoBlock.append(sunRiseImg);
+  const sunSetInfoBlock = createEl("div", "sun-set-block block");
+  const sunSetInfo = createEl("span", "sun-set-info");
+  const sunSetImg = createEl("img", "sun-set-img img");
+  sunSetInfoBlock.append(sunSetImg);
+  sunSetInfoBlock.append(sunSetInfo);
+
+  sunRiseSetContainer.append(sunRiseInfoBlock);
+  sunRiseSetContainer.append(sunSetInfoBlock);
+
+  return sunRiseSetContainer;
+}
+
 function renderForecastContainer() {
   const forecastContainer = createEl("div", "forecast-container");
-  const sunRiseSetContainer = createEl("div", "sun-rise-set");
-  const todayForecastContainer = createEl("div", "today-forecast");
-  const todayForecastHeader = createEl("span", "today-header");
+  const todayForecastContainer = createEl("div", "today-forecast-container");
+  const todayForecastHeader = createEl("p", "today-header");
   todayForecastHeader.textContent = "Today";
   const todayForecastList = createEl("div", "today-list");
   todayForecastContainer.append(todayForecastHeader);
   todayForecastContainer.append(todayForecastList);
   const futureForecastListContainer = createEl("div", "future-forecast");
-  forecastContainer.append(sunRiseSetContainer);
+  forecastContainer.append(renderSunRiseSetContainer());
   forecastContainer.append(todayForecastContainer);
   forecastContainer.append(futureForecastListContainer);
 
@@ -112,12 +130,6 @@ function renderNavBar() {
     .join("");
   navBarContainer.append(navBarList);
 
-  // navBarContainer.innerHTML = `<ul class="nav-bar-list">
-  //                               <li class="home nav-item">Home</li>
-  //                               <li class="details nav-item">Details</li>
-  //                               <li class="fav nav-item">Favorites</li>
-  //                               <li class="settings nav-item">Settings</li>
-  //                              </ul>`;
   return navBarContainer;
 }
 
