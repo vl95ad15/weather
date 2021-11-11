@@ -89,6 +89,14 @@ function renderForecastContainer() {
   const todayForecastHeader = createEl("p", "today-header");
   todayForecastHeader.textContent = "Today";
   const todayForecastList = createEl("div", "today-list");
+  const todayForecastLine = createEl("div", "today-line");
+  const sliderPrev = createEl("button", "btn-prev");
+  sliderPrev.innerHTML = "<";
+  const sliderNext = createEl("button", "btn-next");
+  sliderNext.innerHTML = ">";
+  todayForecastList.append(sliderPrev);
+  todayForecastList.append(todayForecastLine);
+  todayForecastList.append(sliderNext);
   todayForecastContainer.append(todayForecastHeader);
   todayForecastContainer.append(todayForecastList);
   const futureForecastListContainer = createEl("div", "future-forecast");

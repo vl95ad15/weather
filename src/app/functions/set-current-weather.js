@@ -1,27 +1,34 @@
 function setDaysForecast(data) {
-  const todayList = document.querySelector(".today-list");
+  const todayLine = document.querySelector(".today-line");
   const futureForecast = document.querySelector(".future-forecast");
 
-  let [currentDay, ...otherDays] = data.forecast.forecastday;
+  const [currentDay, ...nextDays] = data.forecast.forecastday;
 
-  console.log(otherDays);
+  function getSliderData() {
+    const sliderData = [];
+    const currentHour = new Date().getHours();
+    currentDay.hour.forEach((item, index) =>
+      index > currentHour ? sliderData.push(item) : null
+    );
+    nextDays[0].hour.forEach((item, index) =>
+      index <= currentHour ? sliderData.push(item) : null
+    );
+    return sliderData;
+  }
 
-  todayList.innerHTML = currentDay.hour
-    .map((item, index) => {
-      const currentHour = new Date().getHours();
-      // const timeForecast = item.time.split(" ")[1];
-      const timeForecast = index;
-      if (currentHour < timeForecast) {
-        return `<div class="today-list-item">
-                    <span>${timeForecast + ":00"}</span>
+  todayLine.innerHTML = getSliderData()
+    .map((item) => {
+      const timeForecast = item.time.split(" ")[1];
+
+      return `<div class="today-line-item">
+                    <span>${timeForecast}</span>
                     <img src=${item.condition.icon}>
                     <span>${Math.round(item.temp_c) + "&deg;"}</span>
-                </div>`;
-      }
+                 </div>`;
     })
     .join("");
 
-  futureForecast.innerHTML = otherDays
+  futureForecast.innerHTML = nextDays
     .map((item) => {
       const minMaxTemp = (day, minMax) => {
         const temp = [];
@@ -30,8 +37,8 @@ function setDaysForecast(data) {
         if (minMax === "min") return Math.min.apply(null, temp) + "&deg;";
       };
 
-      const date = new Date(item.date);
       const getWeekDay = () => {
+        const date = new Date(item.date);
         let options = { weekday: "long" };
         return new Intl.DateTimeFormat("en-US", options).format(date);
       };
@@ -62,7 +69,7 @@ export default function setCurrentWeather(data) {
     <span>${data.current.precip_in + "%"}</span>`;
 
   document.querySelector(".pressure").innerHTML = `
-    <img src="https://i.dlpng.com/static/png/4575959-pressure-icon-png-397161-free-icons-library-pressure-png-512_512_preview.webp">
+    <img src="https://icons.veryicon.com/png/o/miscellaneous/streamline-light-icon/gauge-dashboard-1.png">
     <span>${data.current.pressure_mb + " mBar"}</span>
     `;
 

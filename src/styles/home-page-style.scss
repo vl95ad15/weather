@@ -5,7 +5,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   .info-container {
-    width: 100%;
+    min-width: 80%;
     .main-info-wrapper {
       display: flex;
       flex-wrap: nowrap;
@@ -134,9 +134,25 @@
         .today-list {
           display: flex;
           flex-direction: row;
-          justify-content: space-around;
+          justify-content: space-between;
           padding: 10px 0;
-          .today-list-item {
+          button {
+            background-color: rgba(35, 56, 73, 0);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: large;
+            &:hover {
+              background-color: rgba(35, 56, 73, 0.5);
+            }
+          }
+          .today-line {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            overflow: hidden;
+          }
+          .today-line-item {
             display: flex;
             flex-direction: column;
             align-items: center;
