@@ -1,17 +1,3 @@
-import setCurrentWeather from "./set-current-weather";
-
-export async function getWeather(key, value) {
-  const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${value}&days=3&aqi=no&alerts=no`;
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    setCurrentWeather(data);
-  } catch (err) {
-    console.error(err);
-  }
-}
-
 async function getWeatherSearchResult(item, key) {
   const searchValue = item.split(",")[0];
   await getWeather(key, searchValue);
