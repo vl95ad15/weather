@@ -1,0 +1,53 @@
+.today-forecast-container {
+  background: rgb(35, 56, 73);
+  background: linear-gradient(
+    0deg,
+    rgba(35, 56, 73, 1) 0%,
+    rgba(20, 34, 45, 1) 79%
+  );
+  .today-header {
+    padding: 0 10px;
+  }
+  .today-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    button {
+      background-color: rgba(35, 56, 73, 0);
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: large;
+      z-index: 999;
+      height: 100%;
+      &:hover {
+        background-color: rgba(35, 56, 73, 0.5);
+      }
+    }
+    .btn-prev {
+      position: absolute;
+      left: 0;
+    }
+    .btn-next {
+      position: absolute;
+      right: 0;
+    }
+    .today-line {
+      display: flex;
+      padding: 10px 0;
+      position: relative;
+      width: 100%;
+      left: 0;
+      transition: all ease 1s;
+    }
+    .today-line-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 16.64%;
+    }
+  }
+}
