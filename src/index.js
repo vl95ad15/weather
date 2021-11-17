@@ -6,7 +6,7 @@ function startApplication(doc) {
   console.log("Application started");
   const router = configureRouter(doc, "/");
 
-  router.navigate("home");
+  router.navigate("/");
   console.log(router);
 }
 

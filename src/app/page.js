@@ -1,6 +1,6 @@
 import "../styles/home-page-style.scss";
 import { clearRootElement, createEl } from "./functions/helpers";
-import navBarItems from "./nav-bar-items";
+import { navBarItems } from "./const";
 import setupEventListeners from "./events/events";
 import getEventHandlers from "./events/eventHandlers";
 import weatherStorage from "./model/WeatherStorage";

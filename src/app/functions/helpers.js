@@ -1,6 +1,6 @@
 export function createEl(tagName, className) {
   const element = document.createElement(tagName);
-  if (className !== undefined) {
+  if (className) {
     element.className = className;
   }
   return element;

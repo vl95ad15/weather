@@ -1,6 +1,6 @@
 import Router from "./router";
 import renderMainPage from "../page";
-import { apiKey } from "../api-key";
+import { apiKey } from "../const";
 import weatherStorage from "../model/WeatherStorage";
 
 let router = null;
@@ -13,7 +13,7 @@ export default function configureRouter(doc, appRootPath) {
 
   router = new Router([], "history", appRootPath);
 
-  router.add(/^home$/, async () => {
+  router.add(/^\/$/, async () => {
     console.log("Navigating to home page with default city");
     renderMainPage(doc, await weatherStorage.getCity(apiKey, defaultCity));
     // await getWeather(apiKey, defaultCity);
