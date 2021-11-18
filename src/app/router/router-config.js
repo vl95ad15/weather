@@ -1,5 +1,5 @@
 import Router from "./router";
-import renderMainPage from "../page";
+import renderMainPage from "../main";
 import { apiKey } from "../const";
 import weatherStorage from "../model/WeatherStorage";
 
