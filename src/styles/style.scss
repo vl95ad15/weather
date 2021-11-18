@@ -27,13 +27,16 @@ body {
 }
 
 @media screen and (max-width: 800px) {
-  .nav-bar-container {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    .nav-bar-list {
-      display: flex;
-      justify-content: center;
+  #app {
+    flex-direction: column-reverse;
+    .nav-bar-container {
+      position: sticky;
+      bottom: 0;
+      background-color: $bg-1;
+      .nav-bar-list {
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 }
