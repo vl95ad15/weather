@@ -5,7 +5,7 @@ export default class Router {
     this.root = root;
   }
 
-  /* configurate Router, change/making first value of mode and root */
+  /* configure Router, change/making first value of mode and root */
   config(options) {
     this.mode =
       options &&
@@ -82,18 +82,18 @@ export default class Router {
   }
 
   /* removing route from routes Array (optional) */
-  remove(param) {
-    this.routes.forEach((router) => {
-      if (
-        router.handler === param ||
-        router.re.toString() === param.toString()
-      ) {
-        routes.splice(i, 1);
-        return this;
-      }
-    });
-    return this;
-  }
+  // remove(param) {
+  //   this.routes.forEach((router) => {
+  //     if (
+  //       router.handler === param ||
+  //       router.re.toString() === param.toString()
+  //     ) {
+  //       routes.splice(i, 1);
+  //       return this;
+  //     }
+  //   });
+  //   return this;
+  // }
 
   /* navigating to path from our routes array */
   navigate(path) {

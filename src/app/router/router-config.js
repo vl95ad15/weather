@@ -1,7 +1,7 @@
 import Router from "./router";
-import renderMainPage from "../main";
+import renderPage from "../main";
 import { apiKey } from "../const";
-import weatherStorage from "../model/WeatherStorage";
+import getCity from "../functions/getters/get-city";
 
 let router = null;
 const defaultCity = "Minsk";
@@ -15,13 +15,12 @@ export default function configureRouter(doc, appRootPath) {
 
   router.add(/^\/$/, async () => {
     console.log("Navigating to home page with default city");
-    renderMainPage(doc, await weatherStorage.getCity(apiKey, defaultCity));
-    // await getWeather(apiKey, defaultCity);
+    renderPage(doc, await getCity(apiKey, defaultCity));
   });
 
   router.add(/^favorites$/, async () => {
     console.log("Navigating to favorites");
-    await renderMainPage();
+    await renderPage();
   });
 
   router.config({ mode: "history", root: "/" });
