@@ -12,13 +12,13 @@ function renderAppContainer() {
   return appContainer;
 }
 
-export default function renderMainPage(doc, city) {
+export default function renderPage(doc, data) {
   const rootElement = clearRootElement();
   const appContainer = renderAppContainer();
 
   // appContainer.append(renderSearch());
   appContainer.append(renderNavBar());
-  appContainer.append(renderContent(city));
+  appContainer.append(renderContent(data));
 
   rootElement.append(appContainer);
   setupEventListeners(doc, getEventHandlers(doc));
