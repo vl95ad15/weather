@@ -1,4 +1,6 @@
 @import "variables.scss";
+@import "home-page-style.scss";
+@import "fav-page-style.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 body {
@@ -23,6 +25,9 @@ body {
         font-weight: bold;
       }
     }
+  }
+  .info-container {
+    width: 100%;
   }
 }
 

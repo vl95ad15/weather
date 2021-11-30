@@ -22,3 +22,56 @@
     }
   }
 }
+.fav-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  .fav-item {
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    background-color: #1c2b37;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 15px 0;
+    .fav-main-info-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: nowrap;
+      .fav-main-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .fav-deg {
+          font-size: xx-large;
+        }
+        .fav-country {
+          font-size: small;
+          color: #969696;
+        }
+      }
+    }
+    .fav-add-info-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      .fav-prec,
+      .fav-wind {
+        display: flex;
+        flex-direction: row;
+        img {
+          margin-right: 5px;
+          width: 15px;
+          height: 20px;
+          filter: invert(100%);
+        }
+      }
+    }
+  }
+}
+.empty-placeholder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
