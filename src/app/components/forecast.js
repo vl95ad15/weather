@@ -5,7 +5,7 @@ import renderTodayForecastLineData from "../functions/render/render-today-foreac
 import renderFutureForecastListData from "../functions/render/render-future-forecast-list-data";
 
 const renderData = (city, todayForecastLine, futureForecastListContainer) => {
-  const [currentDay, ...nextDays] = city.forecast.forecastday;
+  const [currentDay, ...nextDays] = city.daysForecast;
   const sliderData = getSliderData(currentDay, nextDays);
 
   renderTodayForecastLineData(todayForecastLine, sliderData);

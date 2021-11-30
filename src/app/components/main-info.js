@@ -1,20 +1,29 @@
 import { createEl } from "../functions/helpers";
+import storage from "../model/Storage";
 
 function renderMainInfo(city) {
   const mainInfoWrapper = createEl("div", "main-info-wrapper");
   const weatherImgBlock = createEl("div", "weather-img-block");
   const weatherImg = createEl("img", "weather-img");
-  weatherImg.src = city.current.condition.icon;
+  weatherImg.src = city.img;
   const mainInfoBlock = createEl("div", "main-info-block");
   const cityName = createEl("p", "city-name");
-  cityName.textContent = city.location.name;
+  cityName.textContent = city.name;
   const degrees = createEl("p", "degrees");
-  degrees.innerHTML = Math.round(city.current.temp_c) + "&deg;";
+  degrees.innerHTML = city.temp + "&deg;";
   const weatherType = createEl("p", "weather-type");
-  weatherType.textContent = city.current.condition.text;
+  weatherType.textContent = city.weatherType;
+  const favIcon = createEl("span", "fav-icon");
+  if (!city.isFav) {
+    favIcon.innerHTML = "&star;";
+  } else {
+    favIcon.innerHTML = "&starf;";
+  }
+  favIcon.onclick = () => storage.addToFav();
 
   mainInfoWrapper.append(mainInfoBlock);
   mainInfoWrapper.append(weatherImgBlock);
+  mainInfoWrapper.append(favIcon);
   mainInfoBlock.append(cityName);
   mainInfoBlock.append(degrees);
   mainInfoBlock.append(weatherType);
