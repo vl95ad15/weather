@@ -9,12 +9,15 @@ body {
   background-color: $bg-1;
   color: white;
   .nav-bar-container {
+    background-color: #14222d;
     .nav-bar-list {
-      padding-inline-start: 0;
+      padding-inline-start: 10px;
+      display: flex;
+      flex-direction: row;
       .nav-item {
         list-style: none;
         cursor: pointer;
-        padding: 5px 10px;
+        padding: 10px 15px;
         &:hover {
           background-color: #274f6b;
           color: white;
@@ -33,11 +36,11 @@ body {
 
 @media screen and (max-width: 800px) {
   #app {
-    flex-direction: column-reverse;
     .nav-bar-container {
-      position: sticky;
+      position: fixed;
       bottom: 0;
       background-color: $bg-1;
+      width: 100%;
       .nav-bar-list {
         display: flex;
         justify-content: center;

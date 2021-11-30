@@ -3,6 +3,7 @@
 
 #app {
   display: flex;
+  flex-direction: column;
   .main-info-wrapper {
     display: flex;
     flex-wrap: nowrap;
