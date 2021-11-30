@@ -16,3 +16,8 @@ export function clearRootElement() {
 
   return rootElement;
 }
+
+export function clearBlockById(id) {
+  const block = document.getElementById(id);
+  block.querySelectorAll("*").forEach((n) => n.remove());
+}

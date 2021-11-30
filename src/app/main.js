@@ -1,9 +1,6 @@
 import "../styles/home-page-style.scss";
 import { clearRootElement, createEl } from "./functions/helpers";
-import setupEventListeners from "./events/events";
-import getEventHandlers from "./events/eventHandlers";
 import renderNavBar from "./components/nav-bar";
-import renderContent from "./components/content";
 
 function renderAppContainer() {
   const appContainer = createEl("div");
@@ -12,14 +9,17 @@ function renderAppContainer() {
   return appContainer;
 }
 
-export default function renderPage(doc, data) {
+function renderContentContainer() {
+  const infoContainer = createEl("div", "info-container");
+  infoContainer.id = "content";
+
+  return infoContainer;
+}
+
+export default function renderPage(doc) {
   const rootElement = clearRootElement();
   const appContainer = renderAppContainer();
-
-  // appContainer.append(renderSearch());
-  appContainer.append(renderNavBar());
-  appContainer.append(renderContent(data));
-
+  appContainer.append(renderNavBar(doc));
+  appContainer.append(renderContentContainer());
   rootElement.append(appContainer);
-  setupEventListeners(doc, getEventHandlers(doc));
 }
