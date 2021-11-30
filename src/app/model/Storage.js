@@ -3,7 +3,6 @@ import configureRouter from "../router/router-config";
 
 class Storage {
   constructor() {
-    this.offset = 0;
     this.defaultCity = "Minsk";
     this.favorites = [];
     this.currentCity = null;

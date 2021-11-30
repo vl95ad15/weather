@@ -4,6 +4,7 @@ import getSliderData from "../functions/getters/get-slider-data";
 import renderTodayForecastLineData from "../functions/render/render-today-foreacast-line-data";
 import renderFutureForecastListData from "../functions/render/render-future-forecast-list-data";
 import storage from "../model/Storage";
+import Slider from "../model/Slider";
 
 const renderData = (city, todayForecastLine, futureForecastListContainer) => {
   const [currentDay, ...nextDays] = storage.currentCity.daysForecast;
@@ -14,6 +15,7 @@ const renderData = (city, todayForecastLine, futureForecastListContainer) => {
 };
 
 export default function renderForecastContainer(city) {
+  const slider = new Slider();
   const forecastContainer = createEl("div", "forecast-container");
   const todayForecastContainer = createEl("div", "today-forecast-container");
   const todayForecastHeader = createEl("p", "today-header");
@@ -23,8 +25,15 @@ export default function renderForecastContainer(city) {
 
   const sliderPrev = createEl("button", "button btn-prev");
   sliderPrev.innerHTML = "<";
+  sliderPrev.addEventListener("click", () =>
+    slider.prevBtnSliderHandler(todayForecastLine)
+  );
+
   const sliderNext = createEl("button", "button btn-next");
   sliderNext.innerHTML = ">";
+  sliderNext.addEventListener("click", () =>
+    slider.nextBtnSliderHandler(todayForecastLine)
+  );
 
   todayForecastList.append(sliderPrev);
   todayForecastList.append(todayForecastLine);
