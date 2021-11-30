@@ -1,14 +1,14 @@
 import "./index.html";
 import "./styles/style.scss";
 import configureRouter from "./app/router/router-config";
-import renderPage from "./app/main";
+import storage from "./app/model/Storage";
+import { API_KEY } from "./app/const";
 
-function startApplication(doc) {
+async function startApplication() {
   console.log("Application started");
-  renderPage(doc);
-  const router = configureRouter(doc, "/");
+  await storage.getCity(API_KEY);
+  const router = configureRouter("/");
   router.navigate("/");
-  console.log(router);
 }
 
-window.addEventListener("load", () => startApplication(document));
+window.addEventListener("load", () => startApplication());

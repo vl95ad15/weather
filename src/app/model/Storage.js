@@ -1,4 +1,5 @@
 import City from "./City.js";
+import configureRouter from "../router/router-config";
 
 class Storage {
   constructor() {
@@ -33,17 +34,24 @@ class Storage {
     }
     console.log(`Ok with status ${response.status}`);
     const data = await response.json();
-    console.log(data);
     const convertedCityData = this.convertData(data);
     this.currentCity = convertedCityData;
-    console.log(convertedCityData);
     return convertedCityData;
   }
 
-  getWeatherSearchResult(item, key) {
-    const searchValue = item.name.split(",")[0];
-    const result = this.getCity(key, searchValue);
-    this.currentCity = result;
+  async getWeatherSearchResult(item, key) {
+    const searchValue = item.split(",")[0];
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${searchValue}&days=3&aqi=no&alerts=no`;
+    const response = await fetch(url);
+    if (!response.ok) {
+      console.error(`Error with status ${response.status}`);
+      return;
+    }
+    console.log(`Ok with status ${response.status}`);
+    const data = await response.json();
+    this.currentCity = this.convertData(data);
+    const router = configureRouter("/");
+    router.navigate("/");
   }
 
   async searchResult(key, value) {
@@ -52,15 +60,22 @@ class Storage {
     const data = await response.json();
     const returnedData = data.splice(0, 3);
     this.searchData = returnedData;
-    console.log(this.searchData);
 
     return returnedData;
   }
 
-  addToFav() {
+  addRemoveFav() {
     const favorites = this.favorites;
-    this.currentCity.isFav = true;
-    favorites.push(this.currentCity);
+    if (!this.currentCity.isFav) {
+      this.currentCity.isFav = true;
+      favorites.push(this.currentCity);
+    } else {
+      const index = favorites.indexOf(this.currentCity);
+      if (index > -1) {
+        this.currentCity.isFav = false;
+        favorites.splice(index, 1);
+      }
+    }
   }
 }
 

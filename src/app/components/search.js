@@ -2,6 +2,18 @@ import { createEl } from "../functions/helpers";
 import { API_KEY } from "../const";
 import storage from "../model/Storage";
 
+const searchDataRenderer = () =>
+  storage.searchData
+    .map((item) => `<li id="${item.id}" class="result-item">${item.name}</li>`)
+    .join("");
+
+const onClick = (list) =>
+  list.childNodes.forEach((item) => {
+    item.addEventListener("click", () =>
+      storage.getWeatherSearchResult(item.innerText, API_KEY)
+    );
+  });
+
 export default function renderSearch() {
   const searchWrapper = createEl("div", "search-wrapper");
   const searchForm = createEl("form");
@@ -16,14 +28,8 @@ export default function renderSearch() {
   resultsList.id = "list";
   searchField.oninput = async () => {
     await storage.searchResult(API_KEY, searchField.value, resultsList);
-    resultsList.innerHTML = storage.searchData
-      .map(
-        (item) =>
-          `<li id="${item.id}" class="result-item" onclick="${null}">${
-            item.name
-          }</li>`
-      )
-      .join("");
+    resultsList.innerHTML = searchDataRenderer();
+    onClick(resultsList);
   };
 
   searchWrapper.append(searchForm);

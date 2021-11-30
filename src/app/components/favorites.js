@@ -21,7 +21,7 @@ function renderFavoritesContainer() {
         </div>
         <div class="fav-add-info-wrapper">
             <div class="fav-prec">
-                <img src="http://cdn.onlinewebfonts.com/svg/img_499750.png" alt="">
+                <img src="https://cdn.onlinewebfonts.com/svg/img_499750.png" alt="">
                 <span>${item.precipitation}%</span>
             </div>
             <div class="fav-wind">

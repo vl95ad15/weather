@@ -16,10 +16,10 @@ function renderContentContainer() {
   return infoContainer;
 }
 
-export default function renderPage(doc) {
+export default function renderPage() {
   const rootElement = clearRootElement();
   const appContainer = renderAppContainer();
-  appContainer.append(renderNavBar(doc));
+  appContainer.append(renderNavBar());
   appContainer.append(renderContentContainer());
   rootElement.append(appContainer);
 }

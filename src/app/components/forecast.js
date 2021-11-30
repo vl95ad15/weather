@@ -3,9 +3,10 @@ import renderSunRiseSetContainer from "./sun-rise-set";
 import getSliderData from "../functions/getters/get-slider-data";
 import renderTodayForecastLineData from "../functions/render/render-today-foreacast-line-data";
 import renderFutureForecastListData from "../functions/render/render-future-forecast-list-data";
+import storage from "../model/Storage";
 
 const renderData = (city, todayForecastLine, futureForecastListContainer) => {
-  const [currentDay, ...nextDays] = city.daysForecast;
+  const [currentDay, ...nextDays] = storage.currentCity.daysForecast;
   const sliderData = getSliderData(currentDay, nextDays);
 
   renderTodayForecastLineData(todayForecastLine, sliderData);

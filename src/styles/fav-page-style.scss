@@ -34,6 +34,10 @@
     border-radius: 15px;
     padding: 5px;
     margin: 15px 0;
+    cursor: pointer;
+    &:hover {
+      background-color: #274f6b;
+    }
     .fav-main-info-wrapper {
       display: flex;
       flex-direction: row;
@@ -74,4 +78,5 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  padding: 20px;
 }

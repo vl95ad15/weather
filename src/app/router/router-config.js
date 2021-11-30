@@ -1,12 +1,11 @@
 import Router from "./router";
 import mainPage from "../pages/main-page";
 import favPage from "../pages/fav-page";
-import storage from "../model/Storage";
-import { API_KEY } from "../const";
+import renderPage from "../main";
 
 let router = null;
 
-export default function configureRouter(doc, appRootPath) {
+export default function configureRouter(appRootPath) {
   if (router !== null) {
     return router;
   }
@@ -15,7 +14,8 @@ export default function configureRouter(doc, appRootPath) {
 
   router.add(/^\/$/, async () => {
     console.log("Navigating to home page with current city");
-    mainPage(await storage.getCity(API_KEY));
+    renderPage();
+    mainPage();
   });
 
   router.add(/^favorites$/, async () => {
@@ -23,10 +23,10 @@ export default function configureRouter(doc, appRootPath) {
     favPage();
   });
 
-  router.add(/^city\/(.*)$/, async (cityName) => {
-    console.log(`Navigating to city ${cityName}`);
-    mainPage();
-  });
+  // router.add(/^city\/(.*)$/, async (cityName) => {
+  //   console.log(`Navigating to city ${cityName}`);
+  //   mainPage();
+  // });
 
   router.config({ mode: "history", root: "/" });
 
