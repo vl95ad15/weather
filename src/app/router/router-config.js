@@ -1,10 +1,10 @@
 import Router from "./router";
-import renderPage from "../main";
-import { apiKey } from "../const";
-import getCity from "../functions/getters/get-city";
+import mainPage from "../pages/main-page";
+import favPage from "../pages/fav-page";
+import storage from "../model/Storage";
+import { API_KEY } from "../const";
 
 let router = null;
-const defaultCity = "Minsk";
 
 export default function configureRouter(doc, appRootPath) {
   if (router !== null) {
@@ -14,13 +14,18 @@ export default function configureRouter(doc, appRootPath) {
   router = new Router([], "history", appRootPath);
 
   router.add(/^\/$/, async () => {
-    console.log("Navigating to home page with default city");
-    renderPage(doc, await getCity(apiKey, defaultCity));
+    console.log("Navigating to home page with current city");
+    mainPage(await storage.getCity(API_KEY));
   });
 
   router.add(/^favorites$/, async () => {
     console.log("Navigating to favorites");
-    await renderPage();
+    favPage();
+  });
+
+  router.add(/^city\/(.*)$/, async (cityName) => {
+    console.log(`Navigating to city ${cityName}`);
+    mainPage();
   });
 
   router.config({ mode: "history", root: "/" });
