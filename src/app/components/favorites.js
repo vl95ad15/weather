@@ -1,18 +1,16 @@
 import { createEl } from "../functions/helpers";
 import storage from "../model/Storage";
 
-function renderFavoritesContainer() {
-  const favoritesContainer = createEl("div", "fav-container");
-  favoritesContainer.innerHTML =
-    storage.favorites.length !== 0
-      ? storage.favorites
-          .map(
-            (item) => `
+const favItemsRenderer = () =>
+  storage.favorites.length !== 0
+    ? storage.favorites
+        .map(
+          (item) => `
     <div class="fav-item">
         <div class="fav-main-info-wrapper">
             <div class="fav-main-info">
                 <span class="fav-deg">${item.temp}&deg;</span>
-                <span>${item.name}</span>
+                <span class="fav-name">${item.name}</span>
                 <span class="fav-country">${item.country}</span>
             </div>
             <div class="fav-img-block">
@@ -31,11 +29,15 @@ function renderFavoritesContainer() {
         </div> 
     </div>
   `
-          )
-          .join("")
-      : `<div class="empty-placeholder">
+        )
+        .join("")
+    : `<div class="empty-placeholder">
             <span >You have no favorites</span>
          </div>`;
+
+function renderFavoritesContainer() {
+  const favoritesContainer = createEl("div", "fav-container");
+  favoritesContainer.innerHTML = favItemsRenderer();
 
   return favoritesContainer;
 }

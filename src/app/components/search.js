@@ -7,7 +7,7 @@ const searchDataRenderer = () =>
     .map((item) => `<li id="${item.id}" class="result-item">${item.name}</li>`)
     .join("");
 
-const onClick = (list) =>
+const resultItemsOnClick = (list) =>
   list.childNodes.forEach((item) => {
     item.addEventListener("click", () =>
       storage.getWeatherSearchResult(item.innerText, API_KEY)
@@ -29,7 +29,7 @@ export default function renderSearch() {
   searchField.oninput = async () => {
     await storage.searchResult(API_KEY, searchField.value, resultsList);
     resultsList.innerHTML = searchDataRenderer();
-    onClick(resultsList);
+    resultItemsOnClick(resultsList);
   };
 
   searchWrapper.append(searchForm);

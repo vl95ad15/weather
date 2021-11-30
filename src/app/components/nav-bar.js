@@ -1,24 +1,16 @@
 import { createEl } from "../functions/helpers";
 import configureRouter from "../router/router-config";
 
-function renderNavBar(doc) {
-  const router = configureRouter(doc, "/");
+function renderNavBar() {
+  const router = configureRouter("/");
   const navBarContainer = createEl("div", "nav-bar-container");
   const navBarList = createEl("ul", "nav-bar-list");
   const itemHome = createEl("li", "nav-item home");
   itemHome.textContent = "Home";
-  itemHome.addEventListener("click", () => {
-    router.navigate("/");
-    itemHome.id = "active";
-    itemFav.id = null;
-  });
+  itemHome.addEventListener("click", () => router.navigate("/"));
   const itemFav = createEl("li", "nav-item favorites");
   itemFav.textContent = "Favorites";
-  itemFav.addEventListener("click", () => {
-    router.navigate("favorites");
-    itemFav.id = "active";
-    itemHome.id = null;
-  });
+  itemFav.addEventListener("click", () => router.navigate("favorites"));
 
   navBarList.append(itemHome);
   navBarList.append(itemFav);
