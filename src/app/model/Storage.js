@@ -24,6 +24,11 @@ class Storage {
     return city;
   }
 
+  backToMainPage() {
+    const router = configureRouter("/");
+    router.navigate("/");
+  }
+
   async getCity(key, city = this.defaultCity) {
     const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=3&aqi=no&alerts=no`;
     const response = await fetch(url);
@@ -49,8 +54,7 @@ class Storage {
     console.log(`Ok with status ${response.status}`);
     const data = await response.json();
     this.currentCity = this.convertData(data);
-    const router = configureRouter("/");
-    router.navigate("/");
+    this.backToMainPage();
   }
 
   async searchResult(key, value) {
@@ -61,6 +65,12 @@ class Storage {
     this.searchData = returnedData;
 
     return returnedData;
+  }
+
+  setCurrentCityById(city) {
+    const favorites = this.favorites;
+    this.currentCity = favorites.find((x) => x.name === city.id);
+    this.backToMainPage();
   }
 
   addRemoveFav() {

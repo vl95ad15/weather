@@ -1,18 +1,20 @@
 import { createEl } from "../functions/helpers";
 import { API_KEY } from "../const";
 import storage from "../model/Storage";
+import { resultItemsOnClick } from "../events/eventListeners";
 
 const searchDataRenderer = () =>
   storage.searchData
     .map((item) => `<li id="${item.id}" class="result-item">${item.name}</li>`)
     .join("");
 
-const resultItemsOnClick = (list) =>
-  list.childNodes.forEach((item) => {
-    item.addEventListener("click", () =>
-      storage.getWeatherSearchResult(item.innerText, API_KEY)
-    );
-  });
+const searchFieldOnInputHandler = (searchField, resultsList) => {
+  searchField.oninput = async () => {
+    await storage.searchResult(API_KEY, searchField.value, resultsList);
+    resultsList.innerHTML = searchDataRenderer();
+    resultItemsOnClick(resultsList);
+  };
+};
 
 export default function renderSearch() {
   const searchWrapper = createEl("div", "search-wrapper");
@@ -26,11 +28,7 @@ export default function renderSearch() {
   const resultsField = createEl("div", "results-field");
   const resultsList = createEl("ul", "results-list");
   resultsList.id = "list";
-  searchField.oninput = async () => {
-    await storage.searchResult(API_KEY, searchField.value, resultsList);
-    resultsList.innerHTML = searchDataRenderer();
-    resultItemsOnClick(resultsList);
-  };
+  searchFieldOnInputHandler(searchField, resultsList);
 
   searchWrapper.append(searchForm);
   searchWrapper.append(resultsField);
