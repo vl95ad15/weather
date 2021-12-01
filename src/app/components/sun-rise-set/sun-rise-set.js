@@ -1,5 +1,6 @@
-import { createEl } from "../functions/helpers";
-import storage from "../model/Storage";
+import "./sun-rise-set.scss";
+import { createEl } from "../../functions/helpers";
+import storage from "../../model/Storage";
 
 function renderSunRiseSetContainer() {
   const sunRiseSetContainer = createEl("div", "sun-rise-set-container");

@@ -1,7 +1,8 @@
-import { createEl } from "../functions/helpers";
-import { API_KEY } from "../const";
-import storage from "../model/Storage";
-import { resultItemsOnClick } from "../events/eventListeners";
+import "./search.scss";
+import { createEl } from "../../functions/helpers";
+import { API_KEY } from "../../const";
+import storage from "../../model/Storage";
+import { resultItemsOnClick } from "../../events/eventListeners";
 
 const searchDataRenderer = () =>
   storage.searchData
@@ -21,9 +22,7 @@ export default function renderSearch() {
   const searchForm = createEl("form");
   searchForm.id = "search-form";
   const searchField = createEl("input", "search-field");
-  searchField.type = "search";
   searchField.placeholder = "Enter your city...";
-  searchField.autofocus = true;
   searchField.id = "search";
   const resultsField = createEl("div", "results-field");
   const resultsList = createEl("ul", "results-list");

@@ -1,6 +1,4 @@
 @import "variables.scss";
-@import "home-page-style.scss";
-@import "fav-page-style.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 body {
@@ -8,29 +6,12 @@ body {
   margin: 0;
   background-color: $bg-1;
   color: white;
-  .nav-bar-container {
-    background-color: #14222d;
-    .nav-bar-list {
-      padding-inline-start: 10px;
-      display: flex;
-      flex-direction: row;
-      .nav-item {
-        list-style: none;
-        cursor: pointer;
-        padding: 10px 15px;
-        &:hover {
-          background-color: #274f6b;
-          color: white;
-        }
-      }
-      #active {
-        background-color: red;
-        font-weight: bold;
-      }
+  #app {
+    display: flex;
+    flex-direction: column;
+    .info-container {
+      width: 100%;
     }
-  }
-  .info-container {
-    width: 100%;
   }
 }
 

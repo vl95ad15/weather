@@ -1,6 +1,7 @@
-import { createEl } from "../functions/helpers";
-import storage from "../model/Storage";
-import { favItemsOnClick } from "../events/eventListeners";
+import "./favorites.scss";
+import { createEl } from "../../functions/helpers";
+import storage from "../../model/Storage";
+import { favItemsOnClick } from "../../events/eventListeners";
 
 const favItemsRenderer = () =>
   storage.favorites.length !== 0

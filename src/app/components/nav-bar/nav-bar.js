@@ -1,5 +1,6 @@
-import { createEl } from "../functions/helpers";
-import configureRouter from "../router/router-config";
+import "./nav-bar.scss";
+import { createEl } from "../../functions/helpers";
+import configureRouter from "../../router/router-config";
 
 function renderNavBar() {
   const router = configureRouter("/");

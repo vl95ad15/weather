@@ -1,5 +1,5 @@
-import renderSearch from "../components/search";
-import renderFavoritesContainer from "../components/favorites";
+import renderSearch from "../components/search/search";
+import renderFavoritesContainer from "../components/favorites/favorites";
 import { clearBlockById } from "../functions/helpers";
 
 export default function favPage() {

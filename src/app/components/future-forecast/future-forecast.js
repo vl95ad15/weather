@@ -1,10 +1,11 @@
-import getWeekDay from "../getters/get-week-day";
-import minMaxTemp from "../min-max-temp";
+import "./future-forecast.scss";
+import { createEl } from "../../functions/helpers";
+import getWeekDay from "../../functions/get-week-day";
+import minMaxTemp from "../../functions/min-max-temp";
+import storage from "../../model/Storage";
 
-export default function renderFutureForecastListData(
-  futureForecastListContainer,
-  nextDays
-) {
+function renderFutureForecastListData(futureForecastListContainer) {
+  const nextDays = storage.setFutureData();
   futureForecastListContainer.innerHTML = nextDays
     .map((item) => {
       const weekDay = getWeekDay(item);
@@ -23,4 +24,12 @@ export default function renderFutureForecastListData(
               </div>`;
     })
     .join("");
+}
+
+export default function renderFutureForecast() {
+  const futureForecastListContainer = createEl("div", "future-forecast");
+
+  renderFutureForecastListData(futureForecastListContainer);
+
+  return futureForecastListContainer;
 }

@@ -1,0 +1,35 @@
+.sun-rise-set-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding: 50px 0;
+  background: rgb(20, 34, 45);
+  background: linear-gradient(
+    0deg,
+    rgba(20, 34, 45, 1) 45%,
+    rgba(193, 151, 83, 1) 50%,
+    rgba(42, 68, 89, 1) 55%
+  );
+  .sun-rise-block {
+    position: absolute;
+    left: 30px;
+    top: 10px;
+  }
+  .sun-set-block {
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+  }
+  .block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 105px;
+    .img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

@@ -1,5 +1,6 @@
-import { createEl } from "../functions/helpers";
-import storage from "../model/Storage";
+import "./additional-info.scss";
+import { createEl } from "../../functions/helpers";
+import storage from "../../model/Storage";
 
 function renderAdditionalInfo() {
   const additionalInfoWrapper = createEl("div", "additional-info");

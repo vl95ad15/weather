@@ -1,0 +1,21 @@
+.additional-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  background-color: rgb(42, 68, 89);
+  padding: 15px 0;
+  .precipitation,
+  .pressure,
+  .wind {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+      margin-right: 7px;
+      width: 15px;
+      height: 20px;
+      filter: invert(100%);
+    }
+  }
+}

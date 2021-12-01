@@ -1,6 +1,6 @@
-import "../styles/home-page-style.scss";
+import "../styles/style.scss";
 import { clearRootElement, createEl } from "./functions/helpers";
-import renderNavBar from "./components/nav-bar";
+import renderNavBar from "./components/nav-bar/nav-bar";
 
 function renderAppContainer() {
   const appContainer = createEl("div");

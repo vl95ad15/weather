@@ -6,7 +6,8 @@ class Storage {
     this.defaultCity = "Minsk";
     this.favorites = [];
     this.currentCity = null;
-    this.searchData = null;
+    this.searchData = [];
+    this.todayForecastData = [];
   }
 
   convertData(data) {
@@ -27,6 +28,24 @@ class Storage {
   backToMainPage() {
     const router = configureRouter("/");
     router.navigate("/");
+  }
+
+  setSliderData() {
+    const [currentDay, ...nextDays] = this.currentCity.daysForecast;
+    const currentHour = new Date().getHours();
+    currentDay.hour.forEach((item, index) =>
+      index > currentHour ? this.todayForecastData.push(item) : null
+    );
+    nextDays[0].hour.forEach((item, index) =>
+      index <= currentHour ? this.todayForecastData.push(item) : null
+    );
+    return this.todayForecastData;
+  }
+
+  setFutureData() {
+    const days = this.currentCity.daysForecast;
+    const [, ...rest] = days;
+    return rest;
   }
 
   async getCity(key, city = this.defaultCity) {
