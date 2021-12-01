@@ -8,7 +8,8 @@ function renderMainInfo() {
   const weatherImg = createEl("img", "weather-img");
   weatherImg.src = storage.currentCity.img;
   const mainInfoBlock = createEl("div", "main-info-block");
-  const cityName = createEl("p", "city-name");
+  const cityNameBlock = createEl("div", "city-name-block");
+  const cityName = createEl("span", "city-name");
   cityName.textContent = storage.currentCity.name;
   const degrees = createEl("p", "degrees");
   degrees.innerHTML = storage.currentCity.temp + "&deg;";
@@ -17,12 +18,14 @@ function renderMainInfo() {
   const favIcon = createEl("span", "fav-icon");
   favIcon.innerHTML = !storage.currentCity.isFav ? "&star;" : "&starf;";
 
-  favIcon.onclick = () => storage.addRemoveFav();
+  favIcon.addEventListener("click", () => storage.addRemoveFav());
+
+  cityNameBlock.append(favIcon);
+  cityNameBlock.append(cityName);
 
   mainInfoWrapper.append(mainInfoBlock);
   mainInfoWrapper.append(weatherImgBlock);
-  mainInfoWrapper.append(favIcon);
-  mainInfoBlock.append(cityName);
+  mainInfoBlock.append(cityNameBlock);
   mainInfoBlock.append(degrees);
   mainInfoBlock.append(weatherType);
   weatherImgBlock.append(weatherImg);

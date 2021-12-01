@@ -97,11 +97,13 @@ class Storage {
     if (!this.currentCity.isFav) {
       this.currentCity.isFav = true;
       favorites.push(this.currentCity);
+      this.backToMainPage();
     } else {
       const index = favorites.indexOf(this.currentCity);
       if (index > -1) {
         this.currentCity.isFav = false;
         favorites.splice(index, 1);
+        this.backToMainPage();
       }
     }
   }
