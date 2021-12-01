@@ -36,11 +36,15 @@ body {
 
 @media screen and (max-width: 800px) {
   #app {
+    .info-container {
+      margin-bottom: 70px;
+    }
     .nav-bar-container {
       position: fixed;
       bottom: 0;
       background-color: $bg-1;
       width: 100%;
+      height: 70px;
       .nav-bar-list {
         display: flex;
         justify-content: center;
