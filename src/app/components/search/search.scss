@@ -1,12 +1,17 @@
 .search-wrapper {
-  display: inline;
   .search-field {
-    width: 100%;
+    display: block;
+    margin: 0 auto;
+    width: 99%;
+    border: none;
     height: 50px;
     font-size: x-large;
     border-radius: 7px;
   }
   .results-field {
+    display: block;
+    margin: 0 auto;
+    width: 99%;
     background-color: white;
     color: #081b25;
     .results-list {
