@@ -1,7 +1,9 @@
 import Router from "./router";
 import mainPage from "../pages/main-page";
 import favPage from "../pages/fav-page";
-import renderPage from "../main";
+import renderTemplatePage from "../main";
+import storage from "../model/Storage";
+import { API_KEY } from "../const";
 
 let router = null;
 
@@ -14,12 +16,16 @@ export default function configureRouter(appRootPath) {
 
   router.add(/^\/$/, async () => {
     console.log("Navigating to home page with current city");
-    renderPage();
+    if (!storage.currentCity) {
+      await storage.getCity(API_KEY);
+    }
+    renderTemplatePage();
     mainPage();
   });
 
   router.add(/^favorites$/, async () => {
     console.log("Navigating to favorites");
+    renderTemplatePage();
     favPage();
   });
 

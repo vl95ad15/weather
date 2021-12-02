@@ -16,7 +16,7 @@ function renderContentContainer() {
   return infoContainer;
 }
 
-export default function renderPage() {
+export default function renderTemplatePage() {
   const rootElement = clearRootElement();
   const appContainer = renderAppContainer();
   appContainer.append(renderNavBar());
