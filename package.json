@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "start": "cross-env NODE_ENV=development webpack serve --mode development"
+    "start": "cross-env NODE_ENV=development webpack serve --mode development",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "html-loader": "^3.0.0",
     "html-webpack-plugin": "^5.4.0",
+    "jest": "^27.4.3",
     "mini-css-extract-plugin": "^2.4.3",
     "node-sass": "^6.0.1",
     "prettier": "2.4.1",
