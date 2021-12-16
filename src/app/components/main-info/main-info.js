@@ -18,7 +18,7 @@ function renderMainInfo() {
   const favIcon = createEl("span", "fav-icon");
   favIcon.innerHTML = !storage.currentCity.isFav ? "&star;" : "&starf;";
 
-  favIcon.addEventListener("click", () => storage.addRemoveFav());
+  favIcon.addEventListener("click", () => storage.addRemoveFav(favIcon));
 
   cityNameBlock.append(favIcon);
   cityNameBlock.append(cityName);

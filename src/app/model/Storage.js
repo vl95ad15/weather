@@ -92,18 +92,18 @@ class Storage {
     this.backToMainPage();
   }
 
-  addRemoveFav() {
+  addRemoveFav(icon) {
     const favorites = this.favorites;
     if (!this.currentCity.isFav) {
       this.currentCity.isFav = true;
       favorites.push(this.currentCity);
-      this.backToMainPage();
+      icon.innerHTML = "&starf;";
     } else {
       const index = favorites.indexOf(this.currentCity);
       if (index > -1) {
         this.currentCity.isFav = false;
         favorites.splice(index, 1);
-        this.backToMainPage();
+        icon.innerHTML = "&star;";
       }
     }
   }

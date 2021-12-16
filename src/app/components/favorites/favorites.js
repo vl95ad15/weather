@@ -32,7 +32,7 @@ const favItemsRenderer = () =>
         )
         .join("")
     : `<div class="empty-placeholder">
-        <span >You have no favorites</span>
+        <span>You have no favorites</span>
        </div>`;
 
 export default function renderFavoritesContainer() {
